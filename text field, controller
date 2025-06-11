@@ -1,0 +1,175 @@
+import 'package:flutter/material.dart';
+
+
+
+class FlutterClass2 extends StatelessWidget {
+  const FlutterClass2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController phoneController = TextEditingController();
+    return Scaffold(
+      backgroundColor: Colors.grey.shade200,
+      appBar: AppBar(
+        title: Text('class - 2'),
+        centerTitle: true,
+        backgroundColor: Colors.purpleAccent,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white,
+                      shape:RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                  onPressed: (){
+                    print('Button pressed');
+                  }, child: Text('Button')),
+        
+              SizedBox(
+                // width: double.infinity,
+                width: 200,
+                height: 50,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        shape:RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
+                        )
+                    ),
+                    onPressed: (){
+                      print('Button pressed');
+                    }, child: Text('Button')),
+              ),
+        
+              OutlinedButton(onPressed:() {}, child: Text('Outline Button')),
+        
+              GestureDetector(
+                  onTap: (){
+                    print('Text Pressed');
+                  },
+                  child: Text('This is text')),
+        
+              SizedBox(height: 10,),
+        
+              SizedBox(
+                height: 20,
+              ),
+        
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0,right: 10),
+                child: TextField(
+                  controller: phoneController,
+                  keyboardType: TextInputType.phone,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your Number',
+                    labelText: 'phone Number',
+                    prefixIcon: Icon(Icons.phone),
+                    suffixIcon: Icon(Icons.check),
+                    labelStyle: TextStyle(
+                      color: Colors.red,
+                      fontSize: 20,
+                    ),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+        
+              ElevatedButton(onPressed:(){
+                if(phoneController.text.isEmpty){
+                  print('Please Enter Your Number');
+                }else if(phoneController.text.length<11){
+                  print('please enter valid number');
+                }else{
+                  print('Your number is ${phoneController.text}');
+                }
+              }, child: Text('submit')),
+
+              SizedBox(
+                height: 15,
+              ),
+              
+              ElevatedButton(onPressed: (){phoneController.clear();
+                }, child: Text('Clear')),
+
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(top: 50),
+                padding: EdgeInsets.all(20),
+                width: 200,
+                height: 200,
+        
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.red,
+                    ),
+                    boxShadow:[
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(20, 30),
+                        blurRadius: 10,
+                      )
+                    ]
+        
+                ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        'This is container',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+        
+                      ),
+                      Text(
+                        'This is container',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+        
+                      ),
+                      Text(
+                        'This is container',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+        
+                      ),
+        
+                    ],
+                  ),
+                ),
+              ),
+        
+            ],
+          ),
+        ),
+      ),
+
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        print('Floting Action pressed');
+      },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.cyan,
+
+      ),
+    );
+  }
+}
